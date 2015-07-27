@@ -18,6 +18,14 @@ public class SpryAudio {
 
 	public static final int DEFAULT_NUM_LOOPS = 1;
 
+	public static PreloadedAudio createPreloadedAudio(String fileName) {
+		return new PreloadedAudio(loadFile(fileName));
+	}
+
+	public static StreamingAudio createStreamingAudio(String fileName) {
+		return new StreamingAudio(loadFile(fileName));
+	}
+
 	public static void init() {
 	}
 
