@@ -3,14 +3,16 @@ package spryaudio;
 import javax.sound.sampled.FloatControl;
 
 /**
- * A {@code Playback} object is created (and returned) every time one of the
- * {@code play} methods of a {@code Audio} object is called. A {@code Playback}
- * object is initialized with the attributes (i.e. volume, number of loops to be
- * played) that were (optionally) passed as arguments to a {@code play} method,
- * and the {@code Playback} object will thus represent an instance of playback
- * with those attributes. A {@code Playback} will run in its own thread and can
- * be controlled through its interface, independent of the {@code Audio} object
- * that created it.
+ * Represents a single instance of playback i.e. audio data that is actively
+ * being played. A {@code Playback} object is created and returned to the caller
+ * every time one of the {@code play} methods of an {@code Audio} object is
+ * called. A {@code Playback} object is initialized with the attributes (i.e.
+ * volume, number of loops to be played) that were (optionally) passed as
+ * arguments to a {@code play} method, and the {@code Playback} object will thus
+ * represent an instance of playback with those attributes. A {@code Playback}
+ * will run in its own thread and can be controlled (e.g. paused or resumed) and
+ * have its mutable attributes (e.g. volume) modified through its interface,
+ * independent of the {@code Audio} object that created it.
  * <p>
  * There is a many-to-one relationship between {@code Playback} object(s) and
  * the {@code Audio} object that spawned them.
