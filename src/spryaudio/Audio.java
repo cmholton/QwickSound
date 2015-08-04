@@ -94,8 +94,9 @@ public abstract class Audio {
 	 * @return The audio file's name.
 	 */
 	public String getFileName() {
-		return fileURL.getFile().substring(
+		String s = fileURL.getFile().substring(
 				fileURL.getFile().lastIndexOf(File.separator) + 1);
+		return s.replaceAll("%20", " ");
 	}
 
 	/**
