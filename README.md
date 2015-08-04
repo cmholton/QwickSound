@@ -18,11 +18,11 @@
     * SpryAudio jar (spryaudio-1.x.x.jar found in the dist directory of this 
       repo)
     * The media files that you want to play
-    * The third-party audio libraries (those found in the lib-mp3-ogg and lib-aac 
-      directories of this repo). 
+    * The third-party audio libraries (those found in the lib-mp3-ogg and 
+      lib-aac directories of this repo). 
 * NOTE: Not all of the libraries are necessary, depending on the specific
-  type(s) of file formats you plan on playing. See the README-LIBS file in this 
-  repo's lib-mp3-ogg directory for specific information.
+  type(s) of audio formats you plan on playing. See the README-LIBS file in 
+  this repo's lib-mp3-ogg directory for specific information.
 * NOTE: The JAAD library (located in the lib-aac directory) must be on the end
   of the classpath in order to play AAC files. See the *Known Issues* section
   below for more information.
@@ -38,8 +38,10 @@ SpryAudio.init();
 StreamingAudio music = SpryAudio.createStreamingAudio("theme_song.mp3");
 StreamingPlayback musicPlayback = music.play();
 
-// When ready, stop the audio and shutdown the SpryAudio system.
+// When ready, stop the audio.
 musicPlayback.stop();
+		
+// Shutdown the SpryAudio system.
 SpryAudio.shutdown();
 ```
 
@@ -80,7 +82,7 @@ SpryAudio.shutdown();
 ### Known Issues
 
 There are no known issues with the SpryAudio code. However, there are two
-issues that have been encountered when using the JAAD library:
+issues that have been encountered when using the JAAD library with SpryAudio: 
 
 * JAAD library issue #1 - JAAD does not seem to like all AAC files, at 
   least when it is used as a Java Sound SPI as it is here with SpryAudio. 
