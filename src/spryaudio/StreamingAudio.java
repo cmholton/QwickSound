@@ -3,9 +3,9 @@ package spryaudio;
 import java.net.URL;
 
 /**
- * {@code Audio} that streams its audio data, i.e. it is played while
- * simultaneously read into memory. {@code StreamingAudio} can be compared to
- * {@code PreloadedAudio} using the following attributes:
+ * {@code Audio} that streams its audio data, defined as the audio data being
+ * played while simultaneously read into memory. {@code StreamingAudio} can be
+ * compared to {@code PreloadedAudio} using the following attributes:
  * <p>
  * <ul>
  * <li>Functionality - Compared to {@code StreamingAudio},
