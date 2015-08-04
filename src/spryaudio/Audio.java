@@ -6,7 +6,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * Represents a single instance of audio, based on a audio file, that is to be
+ * Represents a single instance of audio, based on an audio file, that is to be
  * played. There is a one-to-one relationship between an {@code Audio} object
  * and its underlying audio file.
  * 
