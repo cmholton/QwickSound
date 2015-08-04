@@ -6,8 +6,9 @@
   position-setting of audio, and querying of playback state.   
 * Audio playback can be either preloaded or streamed. In a nutshell, the
   preloaded approach offers the lowest latency and the most functionality,
-  while streaming uses the least amount of memory. See the Javadoc (the 
-  PreloadedAudio and StreamingAudio classes) for more detailed information. 
+  while streaming uses the least amount of memory. See the 
+  [Javadoc](http://cmholton.github.io/SpryAudio/doc) (the PreloadedAudio and 
+  StreamingAudio classes) for more detailed information. 
 * SpryAudio is built on top of Java Sound and utilizes the Tritonus, JLayer,
   JOrbis, and JAAD libraries through Java's SPI.
 
