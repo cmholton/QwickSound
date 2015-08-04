@@ -2,6 +2,7 @@ package spryaudio;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.RejectedExecutionException;
+import java.util.logging.Logger;
 
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioSystem;
@@ -11,6 +12,8 @@ import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineEvent;
 import javax.sound.sampled.LineListener;
 import javax.sound.sampled.LineUnavailableException;
+
+import spryaudio.util.logging.LoggerConfig;
 
 /**
  * A {@code Playback} that preloads its audio data.
@@ -35,6 +38,11 @@ public class PreloadedPlayback extends Playback implements Runnable,
 	 * Flag for continuous looping.
 	 */
 	private boolean loopContinuously = false;
+	/**
+	 * {@code Logger} for the {@code PreloadedPlayback} class.
+	 */
+	private static Logger logger = LoggerConfig
+			.getLogger(PreloadedPlayback.class.getName());
 
 	/**
 	 * Creates a new {@code PreloadedPlayback}. PreloadedPlayback objects will
@@ -66,6 +74,8 @@ public class PreloadedPlayback extends Playback implements Runnable,
 				volCtrl = (FloatControl) clip
 						.getControl(FloatControl.Type.MASTER_GAIN);
 			} else {
+				logger.warning("Master-Gain control is not supported."
+						+ " Volume will be fixed at the default level.");
 			}
 		} catch (LineUnavailableException ex) {
 			ex.printStackTrace();
@@ -76,6 +86,8 @@ public class PreloadedPlayback extends Playback implements Runnable,
 	@Override
 	public void pause() {
 		if (clip.isRunning() && getState() == Playback.State.PLAYING) {
+			logger.info("Pausing playback of \"" + audio.getFileName()
+					+ "\" instance " + instanceID);
 			state = Playback.State.PAUSED; // This must be before clip.stop().
 			clip.stop();
 		}
@@ -84,6 +96,8 @@ public class PreloadedPlayback extends Playback implements Runnable,
 	@Override
 	public void resume() {
 		if (!clip.isRunning() && getState() == Playback.State.PAUSED) {
+			logger.info("Resuming playback of \"" + audio.getFileName()
+					+ "\" instance " + instanceID);
 			long loopsPlayed = clip.getMicrosecondPosition()
 					/ clip.getMicrosecondLength();
 			int loopsToGo = (numLoops - (int) loopsPlayed);
@@ -99,6 +113,8 @@ public class PreloadedPlayback extends Playback implements Runnable,
 
 	@Override
 	public void stop() {
+		logger.info("Stopping playback of \"" + audio.getFileName()
+				+ "\" instance " + instanceID);
 		state = Playback.State.STOPPED;
 		clip.stop();
 		clip.close();
@@ -231,6 +247,9 @@ public class PreloadedPlayback extends Playback implements Runnable,
 		try {
 			exec.execute(this);
 		} catch (RejectedExecutionException e) {
+			logger.warning("A play request was received "
+					+ "but the system is shutting down."
+					+ " Cannot perform the play request.");
 		}
 	}
 }

@@ -1,6 +1,9 @@
 package spryaudio;
 
 import java.net.URL;
+import java.util.logging.Logger;
+
+import spryaudio.util.logging.LoggerConfig;
 
 /**
  * {@code Audio} that streams its audio data, defined as the audio data being
@@ -41,6 +44,11 @@ public class StreamingAudio extends Audio {
 	 * {@code play} method.
 	 */
 	private StreamingPlayback nextPlay;
+	/**
+	 * {@code Logger} for the {@code StreamingAudio} class.
+	 */
+	private static Logger logger = LoggerConfig.getLogger(StreamingAudio.class
+			.getName());
 
 	/**
 	 * Creates a new {@code StreamingAudio} that is based on the audio file with
@@ -96,6 +104,8 @@ public class StreamingAudio extends Audio {
 	 */
 	private StreamingPlayback startPlayback(double volume, int numLoops) {
 		StreamingPlayback currentPlayback = nextPlay;
+		logger.info("Starting streaming playback of \"" + getFileName()
+				+ "\" instance " + currentPlayback.getInstanceID());
 		currentPlayback.start(volume, numLoops, exec);
 
 		// "Prep" for the next call to one of the play methods.

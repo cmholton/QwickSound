@@ -8,6 +8,8 @@ import java.util.logging.Logger;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 
+import spryaudio.util.logging.LoggerConfig;
+
 /**
  * {@code Audio} that loads it audio data completely into memory prior to being
  * played. {@code PreloadedAudio} can be compared to {@code StreamingAudio}
@@ -67,6 +69,11 @@ public class PreloadedAudio extends Audio {
 	 * {@code play} method.
 	 */
 	private PreloadedPlayback nextPlay;
+	/**
+	 * {@code Logger} for the {@code PreloadedAudio} class.
+	 */
+	private static Logger logger = LoggerConfig.getLogger(PreloadedAudio.class
+			.getName());
 
 	/**
 	 * Creates a new {@code PreloadedAudio} that is based on the audio file with
@@ -182,6 +189,8 @@ public class PreloadedAudio extends Audio {
 	 */
 	private PreloadedPlayback startPlayback(double volume, int numLoops) {
 		PreloadedPlayback currentPlay = nextPlay;
+		logger.info("Starting preloaded playback of \"" + getFileName()
+				+ "\" instance " + currentPlay.getInstanceID());
 		currentPlay.start(volume, numLoops, exec);
 
 		// "Prep" for the next call to one of the play methods.

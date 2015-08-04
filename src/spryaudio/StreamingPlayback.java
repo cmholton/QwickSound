@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.logging.Logger;
 
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
@@ -13,6 +14,8 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
+
+import spryaudio.util.logging.LoggerConfig;
 
 /**
  * A {@code Playback} that streams its audio data.
@@ -42,6 +45,11 @@ public class StreamingPlayback extends Playback implements Runnable {
 	 * A synchronization lock.
 	 */
 	private final ReentrantLock lock = new ReentrantLock();
+	/**
+	 * {@code Logger} for the {@code StreamingPlayback} class.
+	 */
+	private static Logger logger = LoggerConfig
+			.getLogger(StreamingPlayback.class.getName());
 
 	/**
 	 * Creates a new {@code StreamingPlayback}. StreamingPlayback objects will
@@ -73,6 +81,8 @@ public class StreamingPlayback extends Playback implements Runnable {
 				volCtrl = (FloatControl) line
 						.getControl(FloatControl.Type.MASTER_GAIN);
 			} else {
+				logger.warning("Master-Gain control is not supported."
+						+ " Volume will be fixed at the default level.");
 			}
 		} catch (LineUnavailableException ex) {
 			ex.printStackTrace();
@@ -82,6 +92,8 @@ public class StreamingPlayback extends Playback implements Runnable {
 	@Override
 	public void pause() {
 		if (line.isRunning() && getState() == Playback.State.PLAYING) {
+			logger.info("Pausing playback of \"" + audio.getFileName()
+					+ "\" instance " + instanceID);
 			lock.lock();
 			state = Playback.State.PAUSED;
 		}
@@ -90,6 +102,8 @@ public class StreamingPlayback extends Playback implements Runnable {
 	@Override
 	public void resume() {
 		if (!line.isRunning() && getState() == Playback.State.PAUSED) {
+			logger.info("Resuming playback of \"" + audio.getFileName()
+					+ "\" instance " + instanceID);
 			lock.unlock();
 			state = Playback.State.PLAYING;
 		}
@@ -97,6 +111,8 @@ public class StreamingPlayback extends Playback implements Runnable {
 
 	@Override
 	public void stop() {
+		logger.info("Stopping playback of \"" + audio.getFileName()
+				+ "\" instance " + instanceID);
 		line.stop();
 		state = Playback.State.STOPPED;
 		// Release system resources.
@@ -186,6 +202,9 @@ public class StreamingPlayback extends Playback implements Runnable {
 		try {
 			exec.execute(this);
 		} catch (RejectedExecutionException e) {
+			logger.warning("A play request was received "
+					+ "but the system is shutting down."
+					+ " Cannot perform the play request.");
 		}
 	}
 }

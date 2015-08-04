@@ -2,11 +2,14 @@ package spryaudio;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.logging.Logger;
 
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.UnsupportedAudioFileException;
+
+import spryaudio.util.logging.LoggerConfig;
 
 /**
  * Serves as the central class of the SpryAudio system, providing factory
@@ -39,6 +42,11 @@ public class SpryAudio {
 	 * user-supplied number.
 	 */
 	public static final int DEFAULT_NUM_LOOPS = 1;
+	/**
+	 * {@code Logger} for the {@code SpryAudio} class.
+	 */
+	private static Logger logger = LoggerConfig.getLogger(SpryAudio.class
+			.getName());
 
 	/**
 	 * Create a new {@code PreloadedAudio} instance from the specified file
@@ -84,6 +92,7 @@ public class SpryAudio {
 		 * be set so that client code does not need to be modified in the
 		 * future.
 		 */
+		logger.info("Initializing ...");
 	}
 
 	/**
@@ -96,6 +105,8 @@ public class SpryAudio {
 	 * {@code PlaybackState.STOP} before exiting.
 	 */
 	public static void shutdown() {
+		logger.info("shutdown() called. Waiting for all playbacks "
+				+ "instances to stop ...");
 		Audio.shutdown();
 	}
 
@@ -113,7 +124,10 @@ public class SpryAudio {
 	private static URL loadFile(String fileName) {
 		URL fileURL = ClassLoader.getSystemResource(fileName);
 		if (fileURL == null) {
+			logger.warning("Could not load file \"" + fileName + "\". Make"
+					+ " sure the file exists and that it is on the classpath.");
 		} else {
+			logger.info("Loaded file \"" + fileName + "\"");
 		}
 		return fileURL;
 	}
@@ -136,8 +150,12 @@ public class SpryAudio {
 			// URL fileURL = ClassLoader.getSystemResource(fileName);
 			audioInStream = AudioSystem.getAudioInputStream(fileURL);
 		} catch (UnsupportedAudioFileException ex) {
+			logger.warning("The audio format of the file \"" + fileName
+					+ "\" could not be recognized.");
 			ex.printStackTrace();
 		} catch (IOException ex) {
+			logger.warning("Could not aquire an AudioInputStream for the file \""
+					+ fileName + "\"");
 			ex.printStackTrace();
 		}
 		// If we have an encoded mp3 or ogg file, decode AudioInputStream to
