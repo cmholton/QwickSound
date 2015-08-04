@@ -12,15 +12,49 @@ import javax.sound.sampled.LineEvent;
 import javax.sound.sampled.LineListener;
 import javax.sound.sampled.LineUnavailableException;
 
+/**
+ * A {@code Playback} that preloads its audio data.
+ * 
+ * @author Christian Holton
+ * 
+ * @see PreloadedAudio
+ * 
+ */
 public class PreloadedPlayback extends Playback implements Runnable,
 		LineListener {
 
+	/**
+	 * Holds the preloaded audio data.
+	 */
 	public Clip clip;
-
+	/**
+	 * Used as a synchronization lock.
+	 */
 	private final Object lock = new Object();
-
+	/**
+	 * Flag for continuous looping.
+	 */
 	private boolean loopContinuously = false;
 
+	/**
+	 * Creates a new {@code PreloadedPlayback}. PreloadedPlayback objects will
+	 * always be created by their associated PreloadedAudio object.
+	 * <p>
+	 * IMPLEMENTATION NOTE: Originally, the fetching of a new {@code Line} was
+	 * done in the {@code run} method, however testing revealed that latency is
+	 * decreased if a {@code Line} is acquired ahead of time, here in the
+	 * constructor.
+	 * 
+	 * @param audio
+	 *            The {@code Audio} that created this {@code PreloadedPlayback}.
+	 * @param audioFormat
+	 *            Specifies the particular arrangement of audio data.
+	 * @param audioBytes
+	 *            Holds the audio data from which a {@code Clip} will be
+	 *            created.
+	 * @param instanceID
+	 *            The {@code instanceID} of this {@code PreloadedPlayback}.
+	 */
 	protected PreloadedPlayback(Audio audio, AudioFormat audioFormat,
 			byte[] audioBytes, long instanceID) {
 		super(audio, instanceID);
@@ -32,7 +66,6 @@ public class PreloadedPlayback extends Playback implements Runnable,
 				volCtrl = (FloatControl) clip
 						.getControl(FloatControl.Type.MASTER_GAIN);
 			} else {
-
 			}
 		} catch (LineUnavailableException ex) {
 			ex.printStackTrace();
@@ -76,6 +109,12 @@ public class PreloadedPlayback extends Playback implements Runnable,
 		return clip.getMicrosecondPosition() / 1000000.0;
 	}
 
+	/**
+	 * Set the position of this {@code PreloadedPlayback} in seconds.
+	 * 
+	 * @param seconds
+	 *            The desired position in seconds.
+	 */
 	public void setPosition(double seconds) {
 		if (seconds < 0) {
 			seconds = 0;
@@ -85,10 +124,18 @@ public class PreloadedPlayback extends Playback implements Runnable,
 		clip.setMicrosecondPosition((long) (seconds * 1000000.0));
 	}
 
+	/**
+	 * Get the length of this {@code PreloadedPlayback} in seconds.
+	 * 
+	 * @return The length in seconds.
+	 */
 	public double getLength() {
 		return clip.getMicrosecondLength() / 1000000.0;
 	}
 
+	/**
+	 * Run the thread that will effectively initiate playback of the audio data.
+	 */
 	@Override
 	public void run() {
 		state = Playback.State.PLAYING;
@@ -103,6 +150,22 @@ public class PreloadedPlayback extends Playback implements Runnable,
 		return "PreloadedPlayback " + audio.getFileName() + " " + instanceID;
 	}
 
+	/**
+	 * Make the current thread wait for the audio data to finish playing. This
+	 * is necessary because {@code clip.loop()} starts its own daemon thread
+	 * (when called in the {@code run} method above) and the current thread (the
+	 * thread that {@code PreloadedPlayback} is running in) will return. The
+	 * current thread is managed by an {@code Executor} and if
+	 * {@code Executor.shutdown()} has been called, and the current thread has
+	 * returned, the {@code clip.loop()} thread will not stop the
+	 * {@code Executor} from shutting down, and not stop the SpryAudio system
+	 * from exiting, therefore prematurely terminating the {@code clip.loop()}
+	 * playback. To remedy this, the current thread must be forced to wait until
+	 * it is notified that the {@code Clip} is closed. This method will be
+	 * called when the {@code update()} method receives a {@code LineEvent} of
+	 * type CLOSE.
+	 * 
+	 */
 	private void doWait() {
 		synchronized (lock) {
 			try {
@@ -113,12 +176,25 @@ public class PreloadedPlayback extends Playback implements Runnable,
 		}
 	}
 
+	/**
+	 * Notify the current thread to stop waiting.This method will be called when
+	 * the {@code clip.loop()} thread (see the {@code doWait} method for more
+	 * info) has finished.
+	 */
 	private void doNotify() {
 		synchronized (lock) {
 			lock.notify();
 		}
 	}
 
+	/**
+	 * Implements the {@code LineListener} interface. This method is called
+	 * whenever the {@code Clip} has a line event.
+	 *
+	 * @param event
+	 *            Encapsulates the line event information sent from the
+	 *            {@code Clip}.
+	 */
 	@Override
 	public void update(LineEvent event) {
 		if (event.getType() == LineEvent.Type.CLOSE) {
@@ -133,6 +209,18 @@ public class PreloadedPlayback extends Playback implements Runnable,
 		}
 	}
 
+	/**
+	 * Start playback of this {@code PreloadedPlayback}.
+	 * 
+	 * @param volume
+	 *            The desired volume.
+	 * @param numLoops
+	 *            The number of times the audio data will be played in
+	 *            succession.
+	 * @param exec
+	 *            Manages the thread that this {@code PreloadedPlayback} runs
+	 *            in.
+	 */
 	protected void start(double volume, int numLoops, final ExecutorService exec) {
 		this.numLoops = numLoops - 1; // By definition, loop(0) plays once.
 		if (numLoops < 0) {
