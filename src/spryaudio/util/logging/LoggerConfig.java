@@ -11,7 +11,7 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 /**
- * Used to configure Java logging for SpryAudio.
+ * Configures Java logging for SpryAudio.
  * 
  * @author Christian Holton
  *
@@ -24,10 +24,18 @@ public class LoggerConfig {
 	public static final Level LEVEL = Level.ALL;
 
 	/**
-	 * Turn off logging output.
+	 * Uncomment and use this logging level to turn off logging output.
 	 */
 	// public static final Level LEVEL = Level.OFF;
 
+	/**
+	 * Get the appropriate {@code Logger}.
+	 * 
+	 * @param name
+	 *            The name of the {@code Logger}.
+	 * 
+	 * @return The {@code Logger} with the specified name.
+	 */
 	public static Logger getLogger(String name) {
 		Logger logger = Logger.getLogger(name);
 		for (Handler handler : logger.getParent().getHandlers()) {
