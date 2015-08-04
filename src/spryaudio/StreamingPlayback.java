@@ -15,10 +15,11 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
 /**
- * A Java Audio implementation of the SpryAudio {@code Playback} interface that
- * streams its audio file.
+ * A {@code Playback} that streams its audio data.
  * 
  * @author Christian Holton
+ * 
+ * @see StreamingAudio
  * 
  */
 public class StreamingPlayback extends Playback implements Runnable {
@@ -185,7 +186,6 @@ public class StreamingPlayback extends Playback implements Runnable {
 		try {
 			exec.execute(this);
 		} catch (RejectedExecutionException e) {
-
 		}
 	}
 }
