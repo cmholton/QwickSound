@@ -6,9 +6,9 @@ import java.util.logging.Logger;
 import spryaudio.util.logging.LoggerConfig;
 
 /**
- * {@code Audio} that streams its audio data, defined as the audio data being
- * played while simultaneously read into memory. {@code StreamingAudio} can be
- * compared to {@code PreloadedAudio} using the following attributes:
+ * {@code Audio} that plays its audio data while simultaneously reading it into
+ * memory. {@code StreamingAudio} can be compared to {@code PreloadedAudio}
+ * using the following attributes:
  * <p>
  * <ul>
  * <li>Functionality - Compared to {@code StreamingAudio},

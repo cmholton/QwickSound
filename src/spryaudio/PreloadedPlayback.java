@@ -16,7 +16,8 @@ import javax.sound.sampled.LineUnavailableException;
 import spryaudio.util.logging.LoggerConfig;
 
 /**
- * A {@code Playback} that preloads its audio data.
+ * A {@code Playback} that preloads its audio data and is created by its
+ * associated {@code PreloadedAudio}.
  * 
  * @author Christian Holton
  * 

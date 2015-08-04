@@ -18,7 +18,8 @@ import javax.sound.sampled.SourceDataLine;
 import spryaudio.util.logging.LoggerConfig;
 
 /**
- * A {@code Playback} that streams its audio data.
+ * A {@code Playback} that streams its audio data and is created by its
+ * associated {@code StreamingAudio}.
  * 
  * @author Christian Holton
  * 

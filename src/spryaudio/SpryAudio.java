@@ -13,9 +13,9 @@ import spryaudio.util.logging.LoggerConfig;
 
 /**
  * Serves as the central class of the SpryAudio system, providing factory
- * methods that client code use to create {@code Audio} instances. Additionally,
- * the system must be initialized and shutdown through the {@code SpryAudio}
- * interface.
+ * methods that client code uses to create {@code Audio} instances.
+ * Additionally, the system must be initialized and shutdown through the
+ * {@code SpryAudio} interface.
  *
  * @author Christian Holton
  *
@@ -49,7 +49,7 @@ public class SpryAudio {
 			.getName());
 
 	/**
-	 * Create a new {@code PreloadedAudio} instance from the specified file
+	 * Creates a new {@code PreloadedAudio} instance from the specified file
 	 * name. The file associated with the new {@code PreloadedAudio} instance
 	 * will be loaded completely into memory prior to being played. See
 	 * {@link PreloadedAudio} for more information.
@@ -66,10 +66,10 @@ public class SpryAudio {
 	}
 
 	/**
-	 * Create a new streaming {@code StreamingAudio} instance from the specified
-	 * file name. The file associated with the new {@code StreamingAudio}
-	 * instance will be streamed when played (i.e. read and played at the same
-	 * time). See {@link StreamingAudio} for more information.
+	 * Creates a new {@code StreamingAudio} instance from the specified file
+	 * name. The file associated with the new {@code StreamingAudio} instance
+	 * will be streamed when played (i.e. read and played at the same time). See
+	 * {@link StreamingAudio} for more information.
 	 * <p>
 	 * Note that the file's containing directory must be on the classpath.
 	 * 
