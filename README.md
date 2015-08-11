@@ -49,8 +49,8 @@ SpryAudio.shutdown();
 ### How to Run the Demo
 
 * A demo is included with the source code. To run the demo, execute the 
-  "run-demo" target in the Ant build file. The build file automatically adds 
-  the third-party libs and media to the classpath.
+  "run-demo" default target in the Ant build file. The build file automatically 
+  adds the third-party libs and media to the classpath.
 * NOTE: Running the demo via Ant causes higher overall CPU usage vs. running
   the demo without Ant.
   

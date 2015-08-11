@@ -7,7 +7,7 @@ Attribution for the media used in the demo.
     * available at: http://www.bensound.com/royalty-free-music/electronica
     * license: [CC BY-ND](https://creativecommons.org/licenses/by-nd/4.0/)   
     * converted to m4a from mp3 using iTunes 12.0.1.26
-    * filename changed to "scifi.m4a" for use in the demo
+    * filename changed to "scifi_music.m4a" for use in the demo
     
 * *early video game-ish fire*
     * by Timbre
@@ -22,6 +22,13 @@ Attribution for the media used in the demo.
     * license: [CC BY](https://creativecommons.org/licenses/by/4.0/)
     * converted to ogg from wav using [SoundConverter 2.0.4](http://soundconverter.org/)
     * filename changed to "laser_cannon.ogg" for use in the demo
+    
+* *lightsaber clash*
+	* by reesewong8
+	* available at: https://www.freesound.org/people/reesewong8/sounds/181863/
+	* license: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/)
+    * converted to mp3 from wav using [SoundConverter 2.0.4](http://soundconverter.org/)
+    * filename changed to "lightsaber.mp3" for use in the demo	
     
 * *Golden Record: English Greeting*
     * by NASA
