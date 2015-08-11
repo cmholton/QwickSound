@@ -21,7 +21,7 @@ public class LoggerConfig {
 	/**
 	 * The current level of logging.
 	 */
-	public static final Level LEVEL = Level.ALL;
+	public static final Level LEVEL = Level.INFO;
 
 	/**
 	 * Uncomment and use this logging level to turn off logging output.
