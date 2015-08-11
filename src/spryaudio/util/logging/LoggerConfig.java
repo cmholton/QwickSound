@@ -26,7 +26,7 @@ public class LoggerConfig {
 	/**
 	 * Uncomment and use this logging level to turn off logging output.
 	 */
-	// public static final Level LEVEL = Level.OFF;
+	//public static final Level LEVEL = Level.OFF;
 
 	/**
 	 * Get the appropriate {@code Logger}.
