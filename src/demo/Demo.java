@@ -62,6 +62,9 @@ public class Demo {
 
 		// Play the laser Audio twice at a volume of 1.25.
 		laserAudio.play(1.25, 2);
+		
+		// Adjust the volume of the music Playback.
+		musicPlayback.setVolume(1.05);
 
 		// Resume the music Playback.
 		musicPlayback.resume();
