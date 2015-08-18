@@ -1,4 +1,4 @@
-package spryaudio;
+package sprysound;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.RejectedExecutionException;
@@ -13,7 +13,7 @@ import javax.sound.sampled.LineEvent;
 import javax.sound.sampled.LineListener;
 import javax.sound.sampled.LineUnavailableException;
 
-import spryaudio.util.logging.LoggerConfig;
+import sprysound.util.logging.LoggerConfig;
 
 /**
  * A {@code Playback} that preloads its audio data and is created by its
@@ -175,7 +175,7 @@ public class PreloadedPlayback extends Playback implements Runnable,
 	 * current thread is managed by an {@code Executor} and if
 	 * {@code Executor.shutdown()} has been called, and the current thread has
 	 * returned, the {@code clip.loop()} thread will not stop the
-	 * {@code Executor} from shutting down, and not stop the SpryAudio system
+	 * {@code Executor} from shutting down, and not stop the SprySound system
 	 * from exiting, therefore prematurely terminating the {@code clip.loop()}
 	 * playback. To remedy this, the current thread must be forced to wait until
 	 * it is notified that the {@code Clip} is closed. This method will be

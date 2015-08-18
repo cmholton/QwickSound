@@ -1,4 +1,4 @@
-package spryaudio;
+package sprysound;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -15,7 +15,7 @@ import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
-import spryaudio.util.logging.LoggerConfig;
+import sprysound.util.logging.LoggerConfig;
 
 /**
  * A {@code Playback} that streams its audio data and is created by its

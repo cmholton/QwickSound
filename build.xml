@@ -1,4 +1,4 @@
-<project name="SpryAudio" default="run-demo">
+<project name="SprySound" default="run-demo">
 
 	<property name="version" value="1.0.0" />
 	<property name="base.dir" value="." />
@@ -9,7 +9,7 @@
 	<property name="media.dir" value="${base.dir}/media" />
 	<property name="dist.dir" value="${base.dir}/dist" />
 	<property name="doc.dir" value="${base.dir}/doc" />
-	<property name="jar.name" value="spryaudio" />	
+	<property name="jar.name" value="sprysound" />	
 	<property name="exclude.files" value="**demo/**" />
 	
 
@@ -63,7 +63,7 @@
 		<delete dir="${doc.dir}" />
 		<mkdir dir="${doc.dir}" />
 		<javadoc sourcepath="${src.dir}" 
-			packagenames="spryaudio, spryaudio.util.logging" 
+			packagenames="sprysound, sprysound.util.logging" 
 			destdir="${doc.dir}" />
 	</target>
 

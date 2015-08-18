@@ -1,4 +1,4 @@
-package spryaudio.util.logging;
+package sprysound.util.logging;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -11,7 +11,7 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 /**
- * Configures Java logging for SpryAudio.
+ * Configures Java logging for SprySound.
  * 
  * @author Christian Holton
  *
@@ -61,7 +61,7 @@ class CustomFormatter extends Formatter {
 
 	private String formatConcise(LogRecord record) {
 		StringBuilder sb = new StringBuilder();
-		sb.append("SpryAudio: ");
+		sb.append("SprySound: ");
 		sb.append(record.getLevel());
 		sb.append(" ");
 		sb.append(record.getMessage());

@@ -1,4 +1,4 @@
-package spryaudio;
+package sprysound;
 
 import javax.sound.sampled.FloatControl;
 
@@ -115,9 +115,9 @@ public abstract class Playback {
 	 *            from 0 (muted) to 2.0. The default volume is 1.0.
 	 */
 	public void setVolume(double newVolume) {
-		newVolume = (newVolume < SpryAudio.MIN_VOLUME ? SpryAudio.MIN_VOLUME
+		newVolume = (newVolume < SprySound.MIN_VOLUME ? SprySound.MIN_VOLUME
 				: newVolume);
-		newVolume = (newVolume > SpryAudio.MAX_VOLUME ? SpryAudio.MAX_VOLUME
+		newVolume = (newVolume > SprySound.MAX_VOLUME ? SprySound.MAX_VOLUME
 				: newVolume);
 		volume = newVolume;
 		float dB = (float) (Math.log(volume) / Math.log(10.0) * 20.0);

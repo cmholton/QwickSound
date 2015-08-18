@@ -1,4 +1,4 @@
-package spryaudio;
+package sprysound;
 
 import java.io.IOException;
 import java.net.URL;
@@ -9,18 +9,18 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-import spryaudio.util.logging.LoggerConfig;
+import sprysound.util.logging.LoggerConfig;
 
 /**
- * Serves as the central class of the SpryAudio system, providing factory
+ * Serves as the central class of the SprySound system, providing factory
  * methods that client code uses to create {@code Audio} instances.
  * Additionally, the system must be initialized and shutdown through the
- * {@code SpryAudio} interface.
+ * {@code SprySound} interface.
  *
  * @author Christian Holton
  *
  */
-public class SpryAudio {
+public class SprySound {
 
 	/**
 	 * The minimum value for the master-gain/volume. This value will mute the
@@ -43,9 +43,9 @@ public class SpryAudio {
 	 */
 	public static final int DEFAULT_NUM_LOOPS = 1;
 	/**
-	 * {@code Logger} for the {@code SpryAudio} class.
+	 * {@code Logger} for the {@code SprySound} class.
 	 */
-	private static Logger logger = LoggerConfig.getLogger(SpryAudio.class
+	private static Logger logger = LoggerConfig.getLogger(SprySound.class
 			.getName());
 
 	/**
@@ -83,11 +83,11 @@ public class SpryAudio {
 	}
 
 	/**
-	 * Initialize the SpryAudio system.
+	 * Initialize the SprySound system.
 	 */
 	public static void init() {
 		/*
-		 * Currently, init() does not do anything. Future versions of SpryAudio,
+		 * Currently, init() does not do anything. Future versions of SprySound,
 		 * however, will need init() to be called, therefore the precedent must
 		 * be set so that client code does not need to be modified in the
 		 * future.
@@ -96,7 +96,7 @@ public class SpryAudio {
 	}
 
 	/**
-	 * Shutdown the SpryAudio system in an orderly manner, allowing any
+	 * Shutdown the SprySound system in an orderly manner, allowing any
 	 * currently playing sounds to finish before the system exits. More
 	 * specifically, if there exists any {@code Playback} instance whose state
 	 * equals {@code PlaybackState.PLAYING} or {@code PlaybackState.PAUSE} at

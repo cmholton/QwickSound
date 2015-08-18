@@ -1,9 +1,9 @@
-package spryaudio;
+package sprysound;
 
 import java.net.URL;
 import java.util.logging.Logger;
 
-import spryaudio.util.logging.LoggerConfig;
+import sprysound.util.logging.LoggerConfig;
 
 /**
  * {@code Audio} that plays its audio data while simultaneously reading it into
@@ -60,23 +60,23 @@ public class StreamingAudio extends Audio {
 	protected StreamingAudio(URL fileURL) {
 		this.fileURL = fileURL;
 		nextPlay = new StreamingPlayback(this,
-				SpryAudio.acquireAudioInputStream(fileURL), ++numPlaybacks);
+				SprySound.acquireAudioInputStream(fileURL), ++numPlaybacks);
 	}
 
 	@Override
 	public StreamingPlayback play() {
-		return startPlayback(SpryAudio.DEFAULT_VOLUME,
-				SpryAudio.DEFAULT_NUM_LOOPS);
+		return startPlayback(SprySound.DEFAULT_VOLUME,
+				SprySound.DEFAULT_NUM_LOOPS);
 	}
 
 	@Override
 	public StreamingPlayback play(double volume) {
-		return startPlayback(volume, SpryAudio.DEFAULT_NUM_LOOPS);
+		return startPlayback(volume, SprySound.DEFAULT_NUM_LOOPS);
 	}
 
 	@Override
 	public StreamingPlayback play(int numLoops) {
-		return startPlayback(SpryAudio.DEFAULT_VOLUME, numLoops);
+		return startPlayback(SprySound.DEFAULT_VOLUME, numLoops);
 	}
 
 	@Override
@@ -110,7 +110,7 @@ public class StreamingAudio extends Audio {
 
 		// "Prep" for the next call to one of the play methods.
 		nextPlay = new StreamingPlayback(this,
-				SpryAudio.acquireAudioInputStream(fileURL), ++numPlaybacks);
+				SprySound.acquireAudioInputStream(fileURL), ++numPlaybacks);
 		return currentPlayback;
 	}
 }

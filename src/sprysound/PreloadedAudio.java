@@ -1,4 +1,4 @@
-package spryaudio;
+package sprysound;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 
-import spryaudio.util.logging.LoggerConfig;
+import sprysound.util.logging.LoggerConfig;
 
 /**
  * {@code Audio} that loads it audio data completely into memory prior to being
@@ -84,25 +84,25 @@ public class PreloadedAudio extends Audio {
 	 */
 	protected PreloadedAudio(URL fileURL) {
 		this.fileURL = fileURL;
-		audioInStream = SpryAudio.acquireAudioInputStream(fileURL);
+		audioInStream = SprySound.acquireAudioInputStream(fileURL);
 		audioFormat = audioInStream.getFormat();
 		loadDataAndPrep();
 	}
 
 	@Override
 	public PreloadedPlayback play() {
-		return startPlayback(SpryAudio.DEFAULT_VOLUME,
-				SpryAudio.DEFAULT_NUM_LOOPS);
+		return startPlayback(SprySound.DEFAULT_VOLUME,
+				SprySound.DEFAULT_NUM_LOOPS);
 	}
 
 	@Override
 	public PreloadedPlayback play(double volume) {
-		return startPlayback(volume, SpryAudio.DEFAULT_NUM_LOOPS);
+		return startPlayback(volume, SprySound.DEFAULT_NUM_LOOPS);
 	}
 
 	@Override
 	public PreloadedPlayback play(int numLoops) {
-		return startPlayback(SpryAudio.DEFAULT_VOLUME, numLoops);
+		return startPlayback(SprySound.DEFAULT_VOLUME, numLoops);
 	}
 
 	@Override
