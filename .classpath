@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="media"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib-mp3-ogg/jl1.0.1.jar"/>
+	<classpathentry kind="lib" path="lib-mp3-ogg/jogg-0.0.7.jar"/>
+	<classpathentry kind="lib" path="lib-mp3-ogg/jorbis-0.0.15.jar"/>
+	<classpathentry kind="lib" path="lib-mp3-ogg/mp3spi1.9.5.jar"/>
+	<classpathentry kind="lib" path="lib-mp3-ogg/tritonus_jorbis-0.3.6.jar"/>
+	<classpathentry kind="lib" path="lib-mp3-ogg/tritonus_share-0.3.6.jar"/>
+	<classpathentry kind="lib" path="lib-aac/jaad-0.8.4-modified.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
