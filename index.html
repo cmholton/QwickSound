@@ -4,11 +4,11 @@
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="SprySound : SprySound is a Java audio/sound library with an easy to use API for quick playback of WAV, AIFF, AU, MP3, Ogg, and AAC audio files. ">
+    <meta name="description" content="QwickSound : QwickSound is a Java audio/sound library with an easy to use API for quick playback of WAV, AIFF, AU, MP3, Ogg, and AAC audio files. ">
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-    <title>SprySound</title>
+    <title>QwickSound</title>
   </head>
 
   <body>
@@ -16,14 +16,14 @@
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
         <header class="inner">
-          <a id="forkme_banner" href="https://github.com/cmholton/SprySound">View on GitHub</a>
+          <a id="forkme_banner" href="https://github.com/cmholton/QwickSound">View on GitHub</a>
 
-          <h1 id="project_title">SprySound</h1>
-          <h2 id="project_tagline">SprySound is a Java audio/sound library with an easy to use API for quick playback of WAV, AIFF, AU, MP3, Ogg, and AAC audio files. </h2>
+          <h1 id="project_title">QwickSound</h1>
+          <h2 id="project_tagline">QwickSound is a Java audio/sound library with an easy to use API for quick playback of WAV, AIFF, AU, MP3, Ogg, and AAC audio files. </h2>
 
             <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/cmholton/SprySound/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/cmholton/SprySound/tarball/master">Download this project as a tar.gz file</a>
+              <a class="zip_download_link" href="https://github.com/cmholton/QwickSound/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/cmholton/QwickSound/tarball/master">Download this project as a tar.gz file</a>
             </section>
         </header>
     </div>
@@ -32,10 +32,10 @@
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
         <h1>
-<a id="sprysound" class="anchor" href="#sprysound" aria-hidden="true"><span class="octicon octicon-link"></span></a>SprySound</h1>
+<a id="qwicksound" class="anchor" href="#qwicksound" aria-hidden="true"><span class="octicon octicon-link"></span></a>QwickSound</h1>
 
 <ul>
-<li>SprySound is a Java audio/sound library with an easy to use API for quick 
+<li>QwickSound is a Java audio/sound library with an easy to use API for quick 
 playback of WAV, AIFF, AU, MP3, Ogg, and AAC audio files. </li>
 <li>Functionality includes volume control, pause/resume, looping, 
 position-setting of audio, and querying of playback state.<br>
@@ -43,9 +43,9 @@ position-setting of audio, and querying of playback state.<br>
 <li>Audio playback can be either preloaded or streamed. In a nutshell, the
 preloaded approach offers the lowest latency and the most functionality,
 while streaming uses the least amount of memory. See the 
-<a href="http://cmholton.github.io/SprySound/doc">Javadoc</a> (the PreloadedAudio and 
+<a href="http://cmholton.github.io/QwickSound/doc">Javadoc</a> (the PreloadedAudio and 
 StreamingAudio classes) for more detailed information. </li>
-<li>SprySound is built on top of Java Sound and utilizes the Tritonus, JLayer,
+<li>QwickSound is built on top of Java Sound and utilizes the Tritonus, JLayer,
 JOrbis, and JAAD libraries through Java's SPI.</li>
 </ul>
 
@@ -53,10 +53,10 @@ JOrbis, and JAAD libraries through Java's SPI.</li>
 <a id="how-to-setup" class="anchor" href="#how-to-setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to Setup</h3>
 
 <ul>
-<li>When using SprySound as a library, the following must be on the classpath: 
+<li>When using QwickSound as a library, the following must be on the classpath: 
 
 <ul>
-<li>SprySound jar (sprysound-1.x.x.jar found in the dist directory of this 
+<li>QwickSound jar (qwicksound-1.x.x.jar found in the dist directory of this 
 repo)</li>
 <li>The media files that you want to play</li>
 <li>The third-party audio libraries (those found in the lib-mp3-ogg and 
@@ -74,18 +74,18 @@ below for more information.</li>
 <h3>
 <a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to Use</h3>
 
-<div class="highlight highlight-java"><pre><span class="pl-c">// Initialize the SprySound system.</span>
-<span class="pl-smi">SprySound</span><span class="pl-k">.</span>init();
+<div class="highlight highlight-source-java"><pre><span class="pl-c">// Initialize the QwickSound system.</span>
+<span class="pl-smi">QwickSound</span><span class="pl-k">.</span>init();
 
 <span class="pl-c">// Create the audio and begin playback.</span>
-<span class="pl-smi">StreamingAudio</span> music <span class="pl-k">=</span> <span class="pl-smi">SprySound</span><span class="pl-k">.</span>createStreamingAudio(<span class="pl-s"><span class="pl-pds">"</span>theme_song.mp3<span class="pl-pds">"</span></span>);
+<span class="pl-smi">StreamingAudio</span> music <span class="pl-k">=</span> <span class="pl-smi">QwickSound</span><span class="pl-k">.</span>createStreamingAudio(<span class="pl-s"><span class="pl-pds">"</span>theme_song.mp3<span class="pl-pds">"</span></span>);
 <span class="pl-smi">StreamingPlayback</span> musicPlayback <span class="pl-k">=</span> music<span class="pl-k">.</span>play();
 
 <span class="pl-c">// When ready, stop the audio.</span>
 musicPlayback<span class="pl-k">.</span>stop();
 
-<span class="pl-c">// Shutdown the SprySound system.</span>
-<span class="pl-smi">SprySound</span><span class="pl-k">.</span>shutdown();</pre></div>
+<span class="pl-c">// Shutdown the QwickSound system.</span>
+<span class="pl-smi">QwickSound</span><span class="pl-k">.</span>shutdown();</pre></div>
 
 <h3>
 <a id="how-to-run-the-demo" class="anchor" href="#how-to-run-the-demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to Run the Demo</h3>
@@ -102,24 +102,24 @@ the demo without Ant.</li>
 <a id="repository-organization" class="anchor" href="#repository-organization" aria-hidden="true"><span class="octicon octicon-link"></span></a>Repository Organization</h3>
 
 <ul>
-<li>src directory - sprysound package - The SprySound API that client code uses</li>
-<li>src directory - sprysound.util.logging package - Logging configuration code</li>
+<li>src directory - qwicksound package - The QwickSound API that client code uses</li>
+<li>src directory - qwicksound.util.logging package - Logging configuration code</li>
 <li>src directroy - demo package - Contains a runnable demo</li>
-<li>dist directory - Contains the SprySound jar</li>
+<li>dist directory - Contains the QwickSound jar</li>
 <li>lib-mp3-ogg directory - Contains third-party libs needed for playback of MP3
 and Ogg audio</li>
 <li>lib-aac directory - Contains the third-party lib needed for playback of AAC
 audio. In its own directory, the lib can be easily added to the end of the
 classpath.</li>
 <li>media directory - Contains some sample audio files used in the demo</li>
-<li>doc directory - Contains the SprySound Javadoc</li>
+<li>doc directory - Contains the QwickSound Javadoc</li>
 </ul>
 
 <h3>
 <a id="documentation" class="anchor" href="#documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Documentation</h3>
 
 <ul>
-<li><a href="http://cmholton.github.io/SprySound/doc">SprySound Javadoc</a></li>
+<li><a href="http://cmholton.github.io/QwickSound/doc">QwickSound Javadoc</a></li>
 </ul>
 
 <h3>
@@ -132,12 +132,12 @@ classpath.</li>
 <h3>
 <a id="known-issues" class="anchor" href="#known-issues" aria-hidden="true"><span class="octicon octicon-link"></span></a>Known Issues</h3>
 
-<p>There are no known issues with the SprySound code. However, there are two
-issues that have been encountered when using the JAAD library with SprySound: </p>
+<p>There are no known issues with the QwickSound code. However, there are two
+issues that have been encountered when using the JAAD library with QwickSound: </p>
 
 <ul>
 <li>JAAD library issue #1 - JAAD does not seem to like all AAC files, at 
-least when it is used as a Java Sound SPI as it is here with SprySound. 
+least when it is used as a Java Sound SPI as it is here with QwickSound. 
 Specifically, after testing with a large sample of AAC files (100 files),
 roughly 60% were able to  be played, and the rest caused an error with 
 JAAD. The exception was m4a files downloaded from iTunes, all of which 
@@ -167,7 +167,7 @@ properly handled.<br>
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
       <footer class="inner">
-        <p class="copyright">SprySound maintained by <a href="https://github.com/cmholton">cmholton</a></p>
+        <p class="copyright">QwickSound maintained by <a href="https://github.com/cmholton">cmholton</a></p>
         <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
