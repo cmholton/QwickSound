@@ -1,4 +1,4 @@
-package sprysound;
+package qwicksound;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -15,7 +15,7 @@ import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
-import sprysound.util.logging.LoggerConfig;
+import qwicksound.util.logging.LoggerConfig;
 
 /**
  * A {@code Playback} that streams its audio data and is created by its

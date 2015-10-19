@@ -1,4 +1,4 @@
-package sprysound;
+package qwicksound;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 
-import sprysound.util.logging.LoggerConfig;
+import qwicksound.util.logging.LoggerConfig;
 
 /**
  * {@code Audio} that loads it audio data completely into memory prior to being
@@ -84,25 +84,25 @@ public class PreloadedAudio extends Audio {
 	 */
 	protected PreloadedAudio(URL fileURL) {
 		this.fileURL = fileURL;
-		audioInStream = SprySound.acquireAudioInputStream(fileURL);
+		audioInStream = QwickSound.acquireAudioInputStream(fileURL);
 		audioFormat = audioInStream.getFormat();
 		loadDataAndPrep();
 	}
 
 	@Override
 	public PreloadedPlayback play() {
-		return startPlayback(SprySound.DEFAULT_VOLUME,
-				SprySound.DEFAULT_NUM_LOOPS);
+		return startPlayback(QwickSound.DEFAULT_VOLUME,
+				QwickSound.DEFAULT_NUM_LOOPS);
 	}
 
 	@Override
 	public PreloadedPlayback play(double volume) {
-		return startPlayback(volume, SprySound.DEFAULT_NUM_LOOPS);
+		return startPlayback(volume, QwickSound.DEFAULT_NUM_LOOPS);
 	}
 
 	@Override
 	public PreloadedPlayback play(int numLoops) {
-		return startPlayback(SprySound.DEFAULT_VOLUME, numLoops);
+		return startPlayback(QwickSound.DEFAULT_VOLUME, numLoops);
 	}
 
 	@Override

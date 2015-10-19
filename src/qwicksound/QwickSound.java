@@ -1,4 +1,4 @@
-package sprysound;
+package qwicksound;
 
 import java.io.IOException;
 import java.net.URL;
@@ -9,18 +9,18 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-import sprysound.util.logging.LoggerConfig;
+import qwicksound.util.logging.LoggerConfig;
 
 /**
- * Serves as the central class of the SprySound system, providing factory
+ * Serves as the central class of the QwickSound system, providing factory
  * methods that client code uses to create {@code Audio} instances.
  * Additionally, the system must be initialized and shutdown through the
- * {@code SprySound} interface.
+ * {@code QwickSound} interface.
  *
  * @author Christian Holton
  *
  */
-public class SprySound {
+public class QwickSound {
 
 	/**
 	 * The minimum value for the master-gain/volume. This value will mute the
@@ -43,9 +43,9 @@ public class SprySound {
 	 */
 	public static final int DEFAULT_NUM_LOOPS = 1;
 	/**
-	 * {@code Logger} for the {@code SprySound} class.
+	 * {@code Logger} for the {@code QwickSound} class.
 	 */
-	private static Logger logger = LoggerConfig.getLogger(SprySound.class
+	private static Logger logger = LoggerConfig.getLogger(QwickSound.class
 			.getName());
 
 	/**
@@ -83,11 +83,11 @@ public class SprySound {
 	}
 
 	/**
-	 * Initialize the SprySound system.
+	 * Initialize the QwickSound system.
 	 */
 	public static void init() {
 		/*
-		 * Currently, init() does not do anything. Future versions of SprySound,
+		 * Currently, init() does not do anything. Future versions of QwickSound,
 		 * however, will need init() to be called, therefore the precedent must
 		 * be set so that client code does not need to be modified in the
 		 * future.
@@ -96,8 +96,8 @@ public class SprySound {
 	}
 
 	/**
-	 * Shutdown the SprySound system in an orderly manner, allowing any
-	 * currently playing sounds to finish before the system exits. More
+	 * Shutdown the QwickSound system in an orderly manner, allowing any
+	 * currently playing audio to finish before the system exits. More
 	 * specifically, if there exists any {@code Playback} instance whose state
 	 * equals {@code PlaybackState.PLAYING} or {@code PlaybackState.PAUSE} at
 	 * the time {@code shutdown()} is called, then the system will wait until

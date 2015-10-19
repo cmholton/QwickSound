@@ -1,6 +1,6 @@
 # About the Libraries
 
-SprySound will play PCM audio files (WAV, AIFF, AU) without the need for any
+QwickSound will play PCM audio files (WAV, AIFF, AU) without the need for any
 extra libraries. To play other audio formats, the following libraries will
 need to be on your classpath:
 
@@ -64,7 +64,7 @@ need to be on your classpath:
 * Original library is available at 
   [http://jaadec.sourceforge.net/index.php](http://jaadec.sourceforge.net/index.php)
 * NOTE: Due to a bug in this library (see the *Known Issues* section in
-  README.md located in this repo's root directory for more info), SprySound 
+  README.md located in this repo's root directory for more info), QwickSound 
   uses a slightly modified version. The modified JAAD library is located in 
   the lib-acc directory of this repo.
 

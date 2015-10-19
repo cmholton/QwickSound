@@ -1,4 +1,4 @@
-package sprysound.util.logging;
+package qwicksound.util.logging;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -11,7 +11,7 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 /**
- * Configures Java logging for SprySound.
+ * Configures Java logging for QwickSound.
  * 
  * @author Christian Holton
  *
@@ -61,7 +61,7 @@ class CustomFormatter extends Formatter {
 
 	private String formatConcise(LogRecord record) {
 		StringBuilder sb = new StringBuilder();
-		sb.append("SprySound: ");
+		sb.append("QwickSound: ");
 		sb.append(record.getLevel());
 		sb.append(" ");
 		sb.append(record.getMessage());

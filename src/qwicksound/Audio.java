@@ -1,4 +1,4 @@
-package sprysound;
+package qwicksound;
 
 import java.io.File;
 import java.net.URL;
@@ -113,7 +113,7 @@ public abstract class Audio {
 	 * Shutdown the {@code Audio's ExecutorService} in an orderly manner,
 	 * rejecting new {@code play} requests while allowing any currently playing
 	 * instances of {@code Playback} to finish before the system exits. This
-	 * method should only be called by the SprySound system's {@code shutdown}
+	 * method should only be called by the QwickSound system's {@code shutdown}
 	 * method.
 	 */
 	protected static void shutdown() {

@@ -1,4 +1,4 @@
-package sprysound;
+package qwicksound;
 
 import javax.sound.sampled.FloatControl;
 
@@ -115,9 +115,9 @@ public abstract class Playback {
 	 *            from 0 (muted) to 2.0. The default volume is 1.0.
 	 */
 	public void setVolume(double newVolume) {
-		newVolume = (newVolume < SprySound.MIN_VOLUME ? SprySound.MIN_VOLUME
+		newVolume = (newVolume < QwickSound.MIN_VOLUME ? QwickSound.MIN_VOLUME
 				: newVolume);
-		newVolume = (newVolume > SprySound.MAX_VOLUME ? SprySound.MAX_VOLUME
+		newVolume = (newVolume > QwickSound.MAX_VOLUME ? QwickSound.MAX_VOLUME
 				: newVolume);
 		volume = newVolume;
 		float dB = (float) (Math.log(volume) / Math.log(10.0) * 20.0);

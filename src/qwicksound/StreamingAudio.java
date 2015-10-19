@@ -1,9 +1,9 @@
-package sprysound;
+package qwicksound;
 
 import java.net.URL;
 import java.util.logging.Logger;
 
-import sprysound.util.logging.LoggerConfig;
+import qwicksound.util.logging.LoggerConfig;
 
 /**
  * {@code Audio} that plays its audio data while simultaneously reading it into
@@ -60,23 +60,23 @@ public class StreamingAudio extends Audio {
 	protected StreamingAudio(URL fileURL) {
 		this.fileURL = fileURL;
 		nextPlay = new StreamingPlayback(this,
-				SprySound.acquireAudioInputStream(fileURL), ++numPlaybacks);
+				QwickSound.acquireAudioInputStream(fileURL), ++numPlaybacks);
 	}
 
 	@Override
 	public StreamingPlayback play() {
-		return startPlayback(SprySound.DEFAULT_VOLUME,
-				SprySound.DEFAULT_NUM_LOOPS);
+		return startPlayback(QwickSound.DEFAULT_VOLUME,
+				QwickSound.DEFAULT_NUM_LOOPS);
 	}
 
 	@Override
 	public StreamingPlayback play(double volume) {
-		return startPlayback(volume, SprySound.DEFAULT_NUM_LOOPS);
+		return startPlayback(volume, QwickSound.DEFAULT_NUM_LOOPS);
 	}
 
 	@Override
 	public StreamingPlayback play(int numLoops) {
-		return startPlayback(SprySound.DEFAULT_VOLUME, numLoops);
+		return startPlayback(QwickSound.DEFAULT_VOLUME, numLoops);
 	}
 
 	@Override
@@ -110,7 +110,7 @@ public class StreamingAudio extends Audio {
 
 		// "Prep" for the next call to one of the play methods.
 		nextPlay = new StreamingPlayback(this,
-				SprySound.acquireAudioInputStream(fileURL), ++numPlaybacks);
+				QwickSound.acquireAudioInputStream(fileURL), ++numPlaybacks);
 		return currentPlayback;
 	}
 }

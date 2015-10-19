@@ -1,13 +1,13 @@
 package demo;
 
-import sprysound.PreloadedAudio;
-import sprysound.PreloadedPlayback;
-import sprysound.SprySound;
-import sprysound.StreamingAudio;
-import sprysound.StreamingPlayback;
+import qwicksound.PreloadedAudio;
+import qwicksound.PreloadedPlayback;
+import qwicksound.QwickSound;
+import qwicksound.StreamingAudio;
+import qwicksound.StreamingPlayback;
 
 /**
- * A short demonstration of how to use SprySound.
+ * A short demonstration of how to use QwickSound.
  * 
  * 
  * @author Christian Holton
@@ -18,23 +18,23 @@ public class Demo {
 	public static void main(String[] args) {
 
 		// The system must be initialized.
-		SprySound.init();
+		QwickSound.init();
 
 		// Create the StreamingAudio instances. The files must be on the
 		// classpath.
 		StreamingAudio musicAudio = 
-				SprySound.createStreamingAudio("scifi_music.m4a");
+				QwickSound.createStreamingAudio("scifi_music.m4a");
 		StreamingAudio helloAudio = 
-				SprySound.createStreamingAudio("golden_record_greeting.wav");
+				QwickSound.createStreamingAudio("golden_record_greeting.wav");
 
 		// Create the PreloadedAudio instances. The files must be on the
 		// classpath.
 		PreloadedAudio saberAudio = 
-				SprySound.createPreloadedAudio("lightsaber.mp3");
+				QwickSound.createPreloadedAudio("lightsaber.mp3");
 		PreloadedAudio laserAudio = 
-				SprySound.createPreloadedAudio("laser_cannon.ogg");
+				QwickSound.createPreloadedAudio("laser_cannon.ogg");
 		PreloadedAudio fireAudio = 
-				SprySound.createPreloadedAudio("video_game_fire.mp3");
+				QwickSound.createPreloadedAudio("video_game_fire.mp3");
 
 		// Play the scifi music Audio and keep a reference to the returned
 		// Playback so that we can control it later.
@@ -88,7 +88,7 @@ public class Demo {
 		helloAudio.play(1.50);
 
 		// The system must be shutdown.
-		SprySound.shutdown();
+		QwickSound.shutdown();
 	}
 
 	/**
